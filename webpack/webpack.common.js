@@ -6,19 +6,14 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const PackageExtendResolverPlugin = require('package-extend-resolver-plugin')
 const path = require('path')
 const webpack = require('webpack')
-const { getPaths, getDotenv, resolveToExistingOrNull } = require('../utils')
+const { getPaths, getEnv, resolveToExistingOrNull } = require('../utils')
 
 const modeConfig = mode => require(`./webpack.common.${mode}.js`)(mode)
 
 module.exports = (mode = 'production') => {
   const isEnvProduction = mode === 'production'
-  const {
-    PACKAGE_ROOT,
-    BASE_PACKAGE_ROOT,
-    OUTPUT_PATH,
-    assetResolutionOrder
-  } = getPaths()
-  const ENV = getDotenv(mode)
+  const { OUTPUT_PATH, assetResolutionOrder } = getPaths()
+  const ENV = getEnv(mode)
 
   // babel-preset-react-app requires these
   process.env.NODE_ENV = process.env.BABEL_ENV = mode

@@ -138,8 +138,8 @@ const getEnv = mode => {
   const gitRev = new GitRevision()
   const PACKAGE = requireOrNull(paths.PACKAGE_ROOT, 'package.json')
   return {
-    ...paths,
     ...getDotenv(mode),
+    NODE_ENV: mode,
     APP_NAME: PACKAGE.name,
     APP_VERSION: PACKAGE.version,
     BRANCH: gitRev.branch(),
