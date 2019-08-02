@@ -1,0 +1,33 @@
+{
+  "plugins": ["sort-imports-es6-autofix", "sort-requires"],
+  "extends": ["standard", "standard-react"],
+  "parser": "babel-eslint",
+  "env": {
+    "node": true
+  },
+  "rules": {
+    "react/no-deprecated": "error",
+    "react/no-direct-mutation-state": "error",
+    "react/no-typos": "error",
+    "react/require-render-return": "error",
+    "react/no-did-update-set-state": 0,
+    "react/prop-types": "ignore",
+    "dot-notation": "error",
+    "sort-requires/sort-requires": 2,
+    "sort-imports-es6-autofix/sort-imports-es6": [
+      2,
+      {
+        "ignoreCase": false,
+        "ignoreMemberSort": false,
+        "memberSyntaxSortOrder": ["none", "all", "multiple", "single"]
+      }
+    ],
+    "arrow-parens": ["error", "as-needed"],
+    "import/newline-after-import": "error",
+    "object-curly-spacing": ["error", "always"],
+    "no-var": "error",
+    "prefer-const": "error",
+    "quote-props": ["error", "consistent-as-needed"],
+    "no-duplicate-imports": "error"
+  }
+}
