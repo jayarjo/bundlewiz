@@ -5,7 +5,7 @@ const webpack = require('webpack');
 const merge = require('webpack-merge');
 const LodashModuleReplacementPlugin = require('lodash-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
-// const PackageExtendResolverPlugin = require('@itdc/package-extend-resolver-plugin');
+const PackageExtendResolverPlugin = require('package-extend-resolver-plugin');
 const { getPaths, getDotenv, resolveToExistingOrNull } = require('../utils');
 
 const modeConfig = mode => require(`./webpack.common.${mode}.js`)(mode);
@@ -44,10 +44,10 @@ module.exports = (mode = 'production') => {
 					resourceRegExp: /^\.\/locale$/,
 					contextRegExp: /moment$/
 				}),
-				// new PackageExtendResolverPlugin({
-				// 	lookIn: ['src'], // relative to the package root (node_modules will be looked in automatically)
-				// 	assumeExtensions: ['.jsx']
-				// })
+				new PackageExtendResolverPlugin({
+					lookIn: ['src'], // relative to the package root (node_modules will be looked in automatically)
+					assumeExtensions: ['.jsx']
+				})
 				// new BundleAnalyzerPlugin()
 			].filter(Boolean),
 			module: {
