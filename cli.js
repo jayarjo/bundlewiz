@@ -11,18 +11,20 @@ const parseOptions = options => {
   const obj = {}
   options.forEach(opt => {
     const [key, value = true] = opt.split('=')
-    obj[key.replace(/^\-+/, '').toLowerCase()] = value
+    obj[key.replace(/^-+/, '').toLowerCase()] = value
   })
   return obj
 }
 
 const showHelp = () => {
   process.stdout.write(
-    `@itdc/bundlewiz v${VERSION}\n` +
+    `bundlewiz v${VERSION}\n` +
       '\n' +
       'Options:\n' +
       '  --version Show version number\n' +
       '  --help    Show this help\n' +
+      '  --mode    Optional mode to launch the bundler in, e.g: production or development\n' +
+      '  --config  Optional path to the bundler config file\n' +
       '\n' +
       'Usage:\n' +
       '  bundlewiz webpack --mode=production\n'
@@ -30,7 +32,7 @@ const showHelp = () => {
 }
 
 const showVersion = () => {
-  process.stdout.write(`@itdc/bundlewiz v${VERSION}\n`)
+  process.stdout.write(`bundlewiz v${VERSION}\n`)
 }
 
 const bundle = (BUNDLER = 'webpack', options = { mode: 'production' }) => {
